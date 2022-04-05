@@ -42,3 +42,10 @@ main {
 .img-large {
   width: 100%;
 }
+
+.img-thumbnail {
+  height: 80px;
+}
+.sm-container {
+  max-width: 600px;
+}

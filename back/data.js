@@ -1,6 +1,7 @@
 const data = {
   products: [
     {
+      _id: "1",
       name: "Nike slim shirt",
       slug: "nike-slim-shirt",
       category: "shirt",
@@ -12,7 +13,9 @@ const data = {
       numReviews: 10,
       description: "high quality shirt",
     },
+
     {
+      _id: "2",
       name: "Addidas fit shit",
       slug: "addidas-fit-shit",
       category: "shirt",
@@ -25,6 +28,7 @@ const data = {
       description: "high quality shirt",
     },
     {
+      _id: "3",
       name: "nike slim shirt",
       slug: "nike-slim-pant",
       category: "shirt",
@@ -37,6 +41,7 @@ const data = {
       description: "high quality shirt",
     },
     {
+      _id: "4",
       name: "nike slim shirt",
       slug: "addidas-slim-pant",
       category: "shirt",

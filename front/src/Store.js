@@ -3,20 +3,34 @@ import { createContext, useReducer } from "react";
 const reducer = (state, action) => {
   switch (action.type) {
     case "ADD_TO_CART":
-      return {
-        ...state,
-        cart: {
-          ...state.cart,
-          cartItems: [...state.cart.cartItems, action.payload],
-        },
-      };
+      const newItem = action.payload;
+      const ItemExist = state.cart.cartItems.find(
+        (item) => item._id === newItem._id
+      );
+      const cartItems = ItemExist
+        ? state.cart.cartItems.map((item) =>
+            item._id === ItemExist._id ? newItem : item
+          )
+        : [...state.cart.cartItems, newItem];
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
+      return { ...state, cart: { ...state.cart, cartItems } };
+    case "REMOVE_ITEM": {
+      const cartItems = state.cart.cartItems.filter((item) => {
+        return item._id !== action.payload._id;
+      });
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
+      return { ...state, cart: { ...state.cart, cartItems } };
+    }
+
     default:
       return state;
   }
 };
 const initialState = {
   cart: {
-    cartItems: [],
+    cartItems: localStorage.getItem("cartItems")
+      ? JSON.parse(localStorage.getItem("cartItems"))
+      : [],
   },
 };
 

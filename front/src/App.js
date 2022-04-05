@@ -8,6 +8,8 @@ import { LinkContainer } from "react-router-bootstrap";
 import Badge from "react-bootstrap/Badge";
 import { useContext } from "react";
 import { Store } from "./Store";
+import CartScreen from "./Screens/CartScreen";
+import SiginScreen from "./Screens/SiginScreen";
 function App() {
   const { state } = useContext(Store);
   const { cart } = state;
@@ -26,7 +28,7 @@ function App() {
                   Cart
                   {cart.cartItems.length > 0 && (
                     <Badge pill bg="danger">
-                      {cart.cartItems.length}
+                      {cart.cartItems.reduce((a, b) => a + b.Quantity, 0)}
                     </Badge>
                   )}
                 </Link>
@@ -39,6 +41,8 @@ function App() {
             <Routes>
               <Route exact path="/product/:slug" element={<ProductScreen />} />
               <Route exact path="/" element={<HomeScreen />} />
+              <Route exact path="/cart" element={<CartScreen />} />
+              <Route exact path="/signin" element={<SiginScreen />} />
             </Routes>
           </Container>
         </main>
